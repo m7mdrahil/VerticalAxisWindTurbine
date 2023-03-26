@@ -16,6 +16,8 @@ The GSM module operates in SMS mode, and the AT command "AT+CNMI=2,2,0,0,0\r" en
 In addition, checkRPM() function is  executed in several parts of the program. As the name suggests, it checks the RPM, and disconnects the load if the RPM is decreasing and connects the load once the RPM reaches a certain threshold. In case there is a lack of wind, the station shuts down and it also ensures that the slow wind is also used to generate power instead of letting it go to waste
 
 When none of these failsafes are triggered, the function normalCondition() is executed. The flowchart and explanation are as follows:
+
+
 ![image](https://user-images.githubusercontent.com/47520410/227806350-c4dc8667-7df1-41bb-9f95-46f4605bba28.png)
 
 The first task involves sampling and displaying data, which is then stored on an SD card in a text file named logs.txt. All the samples are calculated and physically stored by the controller, which enables users to later visualize the performance of the module on programs like Microsoft Excel using the “Text” option in the “Get external data” option on the program.
@@ -31,6 +33,8 @@ For uploading data using GSM, several steps must be taken in a systematic manner
 For uploading data using WiFi, users must connect to the WiFi network, check if the incoming serial data is to be ignored or stored, parse incoming serial data and stored in different variables such as Instantaneous Voltage, Instantaneous Voltage, Latitude, and so on. Users must then connect to the server api.thingspeak.com at port 80, send the data as an HTTP request message along with the API Key, and close the connection. The parsing of data is inspired by Robin2’s tutorial on an Arduino forum, which involves storing chunks of data between start and end markers to ensure users receive the correct data in between the markers.
 
 Another interesting feature of this project is the low-windspeed utilisation. The flowchart and explanation of it are as follows:
+
+
 ![image](https://user-images.githubusercontent.com/47520410/227806690-ee2409b5-c8cc-466e-9cd3-696507dbf718.png)
 
 The process of starting up a power generation station, particularly a wind turbine, involves a series of procedures and control mechanisms to ensure efficient and safe operation. In the case of wind turbines, there are certain conditions that need to be met before the turbine can start generating electricity. These conditions include sufficient wind speed, proper blade rotation, and motor operation.
